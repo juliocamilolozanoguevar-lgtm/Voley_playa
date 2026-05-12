@@ -1,1 +1,6 @@
+.env
 .php-preview-router.php
+backend/target/
+backend/*.log
+backend/*.out.log
+backend/*.err.log
