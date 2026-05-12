@@ -3,6 +3,15 @@ declare(strict_types=1);
 
 class Env
 {
+    public static function loadArray(array $items): void
+    {
+        foreach ($items as $name => $value) {
+            $_ENV[$name] = $value;
+            $_SERVER[$name] = $value;
+            putenv($name . '=' . $value);
+        }
+    }
+
     public static function load(string $path): void
     {
         if (!is_file($path)) {

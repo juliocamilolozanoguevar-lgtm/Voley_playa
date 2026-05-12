@@ -11,7 +11,7 @@ class ReservaController extends Controller
 
         $this->view('reservas/index', [
             'title' => 'Reservas | Voley Diloz',
-            'scripts' => ['js/reservas.js'],
+            'scripts' => ['js/reservas.php'],
             'activePage' => 'reservas',
         ]);
     }

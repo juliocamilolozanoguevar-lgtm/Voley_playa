@@ -1,3 +1,8 @@
+<?php
+declare(strict_types=1);
+
+header('Content-Type: application/javascript; charset=UTF-8');
+?>
 function buildUrl(path = "") {
     const basePath = window.APP_CONFIG?.basePath || "";
     const normalizedPath = path.startsWith("/") ? path : `/${path}`;

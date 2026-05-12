@@ -11,7 +11,7 @@ class AuthController extends Controller
 
         $this->view('auth/login', [
             'title' => 'Login | Voley Diloz',
-            'scripts' => ['js/login.js'],
+            'scripts' => ['js/login.php'],
         ], 'auth');
     }
 

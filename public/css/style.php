@@ -1,3 +1,8 @@
+<?php
+declare(strict_types=1);
+
+header('Content-Type: text/css; charset=UTF-8');
+?>
 :root {
     --app-blue: #1f6feb;
     --app-blue-dark: #1349b4;

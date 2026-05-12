@@ -1,4 +1,3 @@
-.env
 .php-preview-router.php
 backend/target/
 backend/*.log

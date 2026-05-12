@@ -11,7 +11,7 @@ class DashboardController extends Controller
 
         $this->view('dashboard/index', [
             'title' => 'Dashboard | Voley Diloz',
-            'scripts' => ['js/dashboard.js'],
+            'scripts' => ['js/dashboard.php'],
             'activePage' => 'dashboard',
         ]);
     }

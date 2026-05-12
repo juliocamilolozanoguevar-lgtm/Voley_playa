@@ -11,7 +11,7 @@ declare(strict_types=1);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?= e(asset('css/login.css')) ?>">
+    <link rel="stylesheet" href="<?= e(asset('css/login.php')) ?>">
 </head>
 <body class="login-body">
     <?php require $contentView; ?>
@@ -22,7 +22,7 @@ declare(strict_types=1);
             appUrl: <?= json_encode((string) Config::get('app.url', '')) ?>
         };
     </script>
-    <script src="<?= e(asset('js/app.js')) ?>"></script>
+    <script src="<?= e(asset('js/app.php')) ?>"></script>
     <?php foreach ($scripts as $script): ?>
         <script src="<?= e(asset($script)) ?>"></script>
     <?php endforeach; ?>

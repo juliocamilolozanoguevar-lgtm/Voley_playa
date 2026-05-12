@@ -11,7 +11,7 @@ class ClienteController extends Controller
 
         $this->view('clientes/index', [
             'title' => 'Clientes | Voley Diloz',
-            'scripts' => ['js/clientes.js'],
+            'scripts' => ['js/clientes.php'],
             'activePage' => 'clientes',
         ]);
     }
