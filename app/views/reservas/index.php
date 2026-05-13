@@ -83,13 +83,7 @@
                                 <option value="CANCELADA">CANCELADA</option>
                             </select>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <label for="editarEstado" class="form-label">Estado interno</label>
-                            <select id="editarEstado" class="form-select">
-                                <option value="ACTIVA">ACTIVA</option>
-                                <option value="INACTIVA">INACTIVA</option>
-                            </select>
-                        </div>
+                        
                         <div class="col-12">
                             <div id="estadoEdicionHorario" class="helper-text"></div>
                         </div>
