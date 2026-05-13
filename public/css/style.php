@@ -73,6 +73,10 @@ body {
     padding: 2rem 0 3rem;
 }
 
+.page-wrapper > .container {
+    max-width: 1180px;
+}
+
 .page-title {
     font-size: clamp(1.85rem, 3vw, 2.5rem);
     font-weight: 800;
@@ -262,6 +266,49 @@ body {
     border-width: 1px;
 }
 
+.video-panel {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 260px;
+    border-radius: 1rem;
+    overflow: hidden;
+    background:
+        linear-gradient(135deg, rgba(31, 111, 235, 0.88), rgba(15, 157, 121, 0.78));
+    display: grid;
+    place-items: center;
+}
+
+.video-placeholder {
+    width: min(92%, 620px);
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.video-player {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: #07172b;
+    object-fit: contain;
+}
+
+.video-kicker {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    font-weight: 800;
+}
+
+.video-title {
+    margin: 1rem 0 0.5rem;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    font-weight: 800;
+}
+
 @media (max-width: 991.98px) {
     .page-wrapper {
         padding-top: 1.35rem;
@@ -271,5 +318,90 @@ body {
         margin-top: 1rem;
         padding-top: 1rem;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .app-navbar .d-flex.align-items-center {
+        align-items: flex-start !important;
+        flex-direction: column;
+    }
+
+    .section-card .card-header {
+        align-items: stretch !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-wrapper {
+        padding: 1rem 0 2rem;
+    }
+
+    .section-card,
+    .summary-card,
+    .income-card {
+        border-radius: 0.85rem;
+    }
+
+    .section-card .card-header,
+    .section-card .card-body,
+    .summary-card .card-body,
+    .income-card {
+        padding: 1rem;
+    }
+
+    .page-title {
+        font-size: 1.65rem;
+    }
+
+    .slot-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.55rem;
+    }
+
+    .slot-badge {
+        width: 100%;
+        padding: 0.72rem 0.45rem;
+    }
+
+    .btn {
+        min-height: 44px;
+    }
+
+    form .btn,
+    .modal-footer .btn {
+        width: 100%;
+    }
+
+    .section-card .card-header .d-flex {
+        flex-direction: column;
+    }
+
+    .table {
+        min-width: 720px;
+    }
+
+    .video-panel {
+        aspect-ratio: 4 / 5;
+        min-height: 340px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .container {
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .form-control,
+    .form-select {
+        min-height: 46px;
+    }
+
+    .slot-grid {
+        grid-template-columns: 1fr;
     }
 }

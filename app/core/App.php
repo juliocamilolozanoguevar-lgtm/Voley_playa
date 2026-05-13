@@ -9,6 +9,7 @@ class App
         ['GET', '#^/dashboard$#', 'DashboardController', 'index'],
         ['GET', '#^/clientes$#', 'ClienteController', 'index'],
         ['GET', '#^/reservas$#', 'ReservaController', 'index'],
+        ['GET', '#^/video$#', 'VideoController', 'index'],
         ['GET', '#^/logout$#', 'AuthController', 'logout'],
 
         ['POST', '#^/api/login$#', 'AuthController', 'loginApi'],

@@ -34,6 +34,9 @@ $activePage = $activePage ?? '';
                     <li class="nav-item">
                         <a class="nav-link <?= $activePage === 'reservas' ? 'active' : '' ?>" href="<?= e(app_url('reservas')) ?>">Reservas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= $activePage === 'video' ? 'active' : '' ?>" href="<?= e(app_url('video')) ?>">Video</a>
+                    </li>
                 </ul>
                 <div class="d-flex align-items-center gap-3">
                     <span class="navbar-text text-white"><?= e($user['nombre'] ?? 'Administrador') ?></span>
