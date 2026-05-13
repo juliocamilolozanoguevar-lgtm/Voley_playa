@@ -4,7 +4,9 @@ DirectoryIndex index.php
     RewriteEngine On
     RewriteBase /voley_playa/
 
+    RewriteRule ^$ app/index.php [L]
+
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^ index.php [L,QSA]
+    RewriteRule ^(.+)$ app/index.php?url=$1 [QSA,L]
 </IfModule>
