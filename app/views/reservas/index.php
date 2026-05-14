@@ -44,6 +44,7 @@
                 <div id="mensajeModalReserva"></div>
                 <form id="formEditarReserva" novalidate>
                     <input type="hidden" id="editarReservaId">
+                    <input type="hidden" id="editarEstado" value="ACTIVA">
                     <div class="row g-3">
                         <div class="col-12 col-md-6">
                             <label class="form-label">Cliente</label>

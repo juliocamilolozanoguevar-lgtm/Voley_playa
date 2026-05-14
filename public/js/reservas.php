@@ -184,7 +184,10 @@ function abrirModalEdicion(reservaId) {
     document.getElementById("editarHoraFin").value = reserva.horaFin || "";
     document.getElementById("editarMonto").value = reserva.pago?.monto ?? reserva.adelanto ?? "";
     document.getElementById("editarEstadoReserva").value = reserva.estadoReserva || "RESERVADA";
-    document.getElementById("editarEstado").value = reserva.estado || "ACTIVA";
+    const editarEstado = document.getElementById("editarEstado");
+    if (editarEstado) {
+        editarEstado.value = reserva.estado || "ACTIVA";
+    }
     showMessage("mensajeModalReserva", "");
     document.getElementById("estadoEdicionHorario").textContent = "";
 
@@ -227,7 +230,7 @@ async function guardarEdicionReserva() {
         horaFin: document.getElementById("editarHoraFin").value,
         monto: document.getElementById("editarMonto").value.trim(),
         estadoReserva: document.getElementById("editarEstadoReserva").value,
-        estado: document.getElementById("editarEstado").value
+        estado: document.getElementById("editarEstado")?.value || "ACTIVA"
     };
 
     if (!payload.canchaId || !payload.fecha || !payload.horaInicio || !payload.horaFin) {
