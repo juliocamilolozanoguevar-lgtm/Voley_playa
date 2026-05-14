@@ -63,6 +63,5 @@
                 </div>
             </div>
         </div>
-        <p class="helper-text mt-3 mb-0">Los datos se calculan directamente desde la base de datos registrada en XAMPP.</p>
     </div>
 </div>
