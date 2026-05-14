@@ -1,6 +1,5 @@
 <div class="mb-4">
     <h1 class="page-title">Reservas</h1>
-    <p class="helper-text mb-0">Busque reservas, revise sus datos y edite el horario cuando sea necesario.</p>
 </div>
 
 <div id="mensajeReserva"></div>
