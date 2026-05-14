@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
-    reservaModal = new bootstrap.Modal(document.getElementById("modalEditarReserva"));
+    reservaModal = crearModalReserva(document.getElementById("modalEditarReserva"));
     document.getElementById("buscadorReservas").addEventListener("input", manejarBusquedaReservas);
     document.getElementById("btnActualizarReservas").addEventListener("click", () => listarReservas(document.getElementById("buscadorReservas").value.trim()));
     document.getElementById("btnGuardarEdicionReserva").addEventListener("click", guardarEdicionReserva);
@@ -26,6 +26,43 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     await Promise.all([cargarCanchasReserva(), listarReservas()]);
 });
+
+function crearModalReserva(modalElement) {
+    if (window.bootstrap?.Modal) {
+        return new bootstrap.Modal(modalElement);
+    }
+
+    modalElement.querySelectorAll("[data-bs-dismiss='modal'], .btn-close").forEach((button) => {
+        button.addEventListener("click", () => ocultarModalReserva(modalElement));
+    });
+
+    return {
+        show() {
+            mostrarModalReserva(modalElement);
+        },
+        hide() {
+            ocultarModalReserva(modalElement);
+        }
+    };
+}
+
+function mostrarModalReserva(modalElement) {
+    modalElement.classList.add("show");
+    modalElement.removeAttribute("aria-hidden");
+    modalElement.setAttribute("aria-modal", "true");
+    modalElement.setAttribute("role", "dialog");
+    modalElement.style.display = "block";
+    document.body.classList.add("modal-open");
+}
+
+function ocultarModalReserva(modalElement) {
+    modalElement.classList.remove("show");
+    modalElement.setAttribute("aria-hidden", "true");
+    modalElement.removeAttribute("aria-modal");
+    modalElement.removeAttribute("role");
+    modalElement.style.display = "none";
+    document.body.classList.remove("modal-open");
+}
 
 async function cargarCanchasReserva() {
     try {
