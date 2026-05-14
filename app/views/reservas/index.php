@@ -78,7 +78,6 @@
                             <select id="editarEstadoReserva" class="form-select">
                                 <option value="RESERVADA">RESERVADA</option>
                                 <option value="CONFIRMADA">CONFIRMADA</option>
-                                <option value="FINALIZADA">FINALIZADA</option>
                                 <option value="CANCELADA">CANCELADA</option>
                             </select>
                         </div>
