@@ -9,7 +9,7 @@
         <span>Listado de reservas</span>
         <div class="d-flex gap-2 w-100 w-lg-auto">
             <input type="search" id="buscadorReservas" class="form-control" placeholder="Buscar por cliente, DNI, cancha o fecha">
-            <button type="button" class="btn btn-outline-primary" id="btnActualizarReservas">Actualizar</button>
+            <button type="button" class="btn btn-outline-primary" id="btnActualizarReservas">Buscar</button>
         </div>
     </div>
     <div class="card-body">
