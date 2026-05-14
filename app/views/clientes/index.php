@@ -1,6 +1,5 @@
 <div class="mb-4">
     <h1 class="page-title">Clientes y reservas</h1>
-    <p class="helper-text mb-0">Registre al cliente y su reserva en una sola pantalla usando la disponibilidad real de la cancha.</p>
 </div>
 
 <div id="mensajeCliente"></div>
@@ -39,7 +38,6 @@
                         <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 align-items-lg-center mb-3">
                             <div>
                                 <h2 class="h6 mb-1">Horarios disponibles</h2>
-                                <p class="helper-text mb-0">Seleccione la hora de inicio con un horario libre y luego escoja manualmente la hora final.</p>
                             </div>
                             <div id="estadoDisponibilidad" class="helper-text"></div>
                         </div>
