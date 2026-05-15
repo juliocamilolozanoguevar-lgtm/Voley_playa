@@ -109,7 +109,7 @@ class Reserva extends BaseModel
             'id_cancha' => $data['canchaId'],
             'estado_reserva' => $data['estadoReserva'] ?? 'RESERVADA',
             'adelanto' => $data['adelanto'],
-            
+            'estado' => $data['estado'] ?? 'ACTIVA',
         ]);
 
         return $this->findById((int) $this->db->lastInsertId()) ?? [];

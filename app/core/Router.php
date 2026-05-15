@@ -93,7 +93,7 @@ class Router
             return;
         }
 
-        echo '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Error</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"></head><body class="bg-light"><main class="container py-5"><div class="alert alert-danger shadow-sm"><h1 class="h4 mb-2">La aplicacion no pudo completarse</h1><p class="mb-0">'
+        echo '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Error</title><style>body{margin:0;font-family:Arial,sans-serif;background:#f4f8fc;color:#16304d}.container{width:min(100% - 2rem,960px);margin:0 auto}.py-5{padding-block:3rem}.alert{padding:1rem;border-radius:1rem}.alert-danger{background:#ffe8ef;border:1px solid #ffc3d2;color:#8f1236}.shadow-sm{box-shadow:0 12px 30px rgba(21,56,96,.08)}.h4{font-size:1.35rem}.mb-2{margin-bottom:.5rem}.mb-0{margin-bottom:0}</style></head><body><main class="container py-5"><div class="alert alert-danger shadow-sm"><h1 class="h4 mb-2">La aplicacion no pudo completarse</h1><p class="mb-0">'
             . e($message)
             . '</p></div></main></body></html>';
     }

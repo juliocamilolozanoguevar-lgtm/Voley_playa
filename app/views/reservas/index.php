@@ -38,7 +38,7 @@
         <div class="modal-content border-0 shadow">
             <div class="modal-header">
                 <h2 class="modal-title fs-5">Editar reserva</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                <button type="button" class="btn-close" data-modal-dismiss aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
                 <div id="mensajeModalReserva"></div>
@@ -90,7 +90,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-outline-secondary" data-modal-dismiss>Cancelar</button>
                 <button type="button" class="btn btn-primary" id="btnGuardarEdicionReserva">Guardar cambios</button>
             </div>
         </div>

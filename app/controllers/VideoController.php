@@ -11,6 +11,7 @@ class VideoController extends Controller
 
         $this->view('video/index', [
             'title' => 'Video | Voley Diloz',
+            'scripts' => ['js/video.php'],
             'activePage' => 'video',
         ]);
     }

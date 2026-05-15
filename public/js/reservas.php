@@ -28,11 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function crearModalReserva(modalElement) {
-    if (window.bootstrap?.Modal) {
-        return new bootstrap.Modal(modalElement);
-    }
-
-    modalElement.querySelectorAll("[data-bs-dismiss='modal'], .btn-close").forEach((button) => {
+    modalElement.querySelectorAll("[data-modal-dismiss], .btn-close").forEach((button) => {
         button.addEventListener("click", () => ocultarModalReserva(modalElement));
     });
 

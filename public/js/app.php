@@ -90,3 +90,20 @@ function addThirtyMinutes(time) {
     const newMinutes = String(totalMinutes % 60).padStart(2, "0");
     return `${newHours}:${newMinutes}`;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-collapse-toggle]").forEach((button) => {
+        const targetSelector = button.getAttribute("data-collapse-toggle");
+        const target = targetSelector ? document.querySelector(targetSelector) : null;
+
+        if (!target) {
+            return;
+        }
+
+        button.addEventListener("click", () => {
+            const expanded = button.getAttribute("aria-expanded") === "true";
+            button.setAttribute("aria-expanded", String(!expanded));
+            target.classList.toggle("show", !expanded);
+        });
+    });
+});
