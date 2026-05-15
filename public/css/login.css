@@ -1,8 +1,4 @@
-<?php
-declare(strict_types=1);
 
-header('Content-Type: text/css; charset=UTF-8');
-?>
 :root {
     --login-blue: #1f6feb;
     --login-blue-dark: #1247ad;
