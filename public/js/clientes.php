@@ -4,6 +4,7 @@ declare(strict_types=1);
 header('Content-Type: application/javascript; charset=UTF-8');
 ?>
 let canchasCache = [];
+let clientesCache = [];
 let horariosLibresActuales = [];
 let horaInicioSeleccionada = "";
 
@@ -19,6 +20,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("fecha").addEventListener("change", manejarCambioBase);
     document.getElementById("horaFin").addEventListener("change", actualizarEstadoHorario);
     document.getElementById("dni").addEventListener("change", autocompletarCliente);
+    document.getElementById("buscadorClientes").addEventListener("input", manejarBusquedaClientes);
+    document.getElementById("btnBuscarClientes").addEventListener("click", () => {
+        filtrarClientes(document.getElementById("buscadorClientes").value);
+    });
 
     document.getElementById("fecha").value = todayIso();
     document.getElementById("horariosDisponibles").innerHTML = '<span class="text-muted">Seleccione una cancha y una fecha.</span>';
@@ -42,29 +47,63 @@ async function cargarCanchas() {
 
 async function listarClientes() {
     try {
-        const clientes = await apiFetch("/api/clientes");
-        const tabla = document.getElementById("tablaClientes");
-
-        if (!clientes.length) {
-            tabla.innerHTML = `
-                <tr>
-                    <td colspan="4" class="text-center text-muted py-4">No hay clientes registrados.</td>
-                </tr>
-            `;
-            return;
-        }
-
-        tabla.innerHTML = clientes.map((cliente) => `
-            <tr>
-                <td>${cliente.idCliente}</td>
-                <td>${escapeHtml(cliente.dni)}</td>
-                <td>${escapeHtml(cliente.nombre)}</td>
-                <td>${escapeHtml(cliente.apellido)}</td>
-            </tr>
-        `).join("");
+        clientesCache = await apiFetch("/api/clientes");
+        filtrarClientes(document.getElementById("buscadorClientes")?.value || "");
     } catch (error) {
         showMessage("mensajeCliente", error.message || "No se pudieron cargar los clientes");
     }
+}
+
+function manejarBusquedaClientes(event) {
+    filtrarClientes(event.target.value);
+}
+
+function filtrarClientes(search = "") {
+    const termino = normalizarTexto(search);
+    const clientesFiltrados = termino
+        ? clientesCache.filter((cliente) => {
+            const textoCliente = normalizarTexto([
+                cliente.idCliente,
+                cliente.dni,
+                cliente.nombre,
+                cliente.apellido
+            ].join(" "));
+
+            return textoCliente.includes(termino);
+        })
+        : clientesCache;
+
+    renderTablaClientes(clientesFiltrados, termino !== "");
+}
+
+function renderTablaClientes(clientes, filtrado = false) {
+    const tabla = document.getElementById("tablaClientes");
+
+    if (!clientes.length) {
+        tabla.innerHTML = `
+            <tr>
+                <td colspan="4" class="text-center text-muted py-4">${filtrado ? "No se encontraron clientes con ese criterio." : "No hay clientes registrados."}</td>
+            </tr>
+        `;
+        return;
+    }
+
+    tabla.innerHTML = clientes.map((cliente) => `
+        <tr>
+            <td>${cliente.idCliente}</td>
+            <td>${escapeHtml(cliente.dni)}</td>
+            <td>${escapeHtml(cliente.nombre)}</td>
+            <td>${escapeHtml(cliente.apellido)}</td>
+        </tr>
+    `).join("");
+}
+
+function normalizarTexto(value) {
+    return String(value ?? "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
 }
 
 async function listarReservas() {

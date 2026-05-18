@@ -68,7 +68,13 @@
 <div class="row g-4">
     <div class="col-12 col-xl-5">
         <div class="card section-card h-100">
-            <div class="card-header">Clientes registrados</div>
+            <div class="card-header d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+                <span>Clientes registrados</span>
+                <div class="d-flex gap-2 w-100 w-lg-auto">
+                    <input type="search" id="buscadorClientes" class="form-control" placeholder="Buscar por ID, DNI, nombre o apellido">
+                    <button type="button" class="btn btn-outline-primary" id="btnBuscarClientes">Buscar</button>
+                </div>
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped align-middle mb-0">
@@ -90,6 +96,7 @@
     <div class="col-12 col-xl-7">
         <div class="card section-card h-100">
             <div class="card-header">Reservas registradas</div>
+            
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped align-middle mb-0">
