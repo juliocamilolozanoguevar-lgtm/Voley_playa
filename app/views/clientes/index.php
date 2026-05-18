@@ -2,6 +2,75 @@
     <h1 class="page-title">Clientes y reservas</h1>
 </div>
 
+<div class="modal" id="modalNuevaReservaCliente" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5">Nueva reserva</h2>
+                <button type="button" class="btn-close" data-modal-cliente-dismiss aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div id="mensajeModalClienteReserva"></div>
+                <form id="formNuevaReservaCliente" novalidate>
+                    <input type="hidden" id="modalClienteId">
+                    <div class="row g-3">
+                        <div class="col-12 col-md-4">
+                            <label for="modalDni" class="form-label">DNI</label>
+                            <input type="text" id="modalDni" class="form-control" readonly>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="modalNombre" class="form-label">Nombre</label>
+                            <input type="text" id="modalNombre" class="form-control" readonly>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="modalApellido" class="form-label">Apellido</label>
+                            <input type="text" id="modalApellido" class="form-control" readonly>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="modalCanchaId" class="form-label">Cancha</label>
+                            <select id="modalCanchaId" class="form-select"></select>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="modalFecha" class="form-label">Fecha</label>
+                            <input type="date" id="modalFecha" class="form-control">
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="modalMonto" class="form-label">Adelanto (opcional)</label>
+                            <input type="number" id="modalMonto" class="form-control" min="0" step="0.01" placeholder="0.00">
+                        </div>
+                        <div class="col-12">
+                            <div class="availability-box">
+                                <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 align-items-lg-center mb-3">
+                                    <div>
+                                        <h2 class="h6 mb-1">Horarios disponibles</h2>
+                                    </div>
+                                    <div id="modalEstadoDisponibilidad" class="helper-text"></div>
+                                </div>
+                                <div id="modalHorariosDisponibles" class="slot-grid"></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Inicio seleccionado</label>
+                            <div class="selected-slot" id="modalHoraInicioSeleccionada">Seleccione un horario disponible</div>
+                            <input type="hidden" id="modalHoraInicio">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="modalHoraFin" class="form-label">Horario de fin</label>
+                            <select id="modalHoraFin" class="form-select">
+                                <option value="">Seleccione el horario final</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-modal-cliente-dismiss>Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnGuardarNuevaReserva">Guardar nueva reserva</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="mensajeCliente"></div>
 
 <div class="card section-card mb-4">
@@ -20,6 +89,7 @@
                 <div class="col-12 col-md-4">
                     <label for="apellido" class="form-label">Apellido</label>
                     <input type="text" id="apellido" class="form-control">
+                    <input type="hidden" id="clienteIdSeleccionado">
                 </div>
                 <div class="col-12 col-md-4">
                     <label for="canchaId" class="form-label">Cancha</label>
@@ -60,13 +130,14 @@
             <div class="d-flex flex-wrap gap-2 mt-4">
                 <button type="submit" class="btn btn-primary">Guardar cliente y reserva</button>
                 <button type="button" class="btn btn-outline-primary" id="btnGuardarSoloCliente">Guardar solo cliente</button>
+                <button type="button" class="btn btn-outline-secondary" id="btnLimpiarClienteReserva">Limpiar seleccion</button>
             </div>
         </form>
     </div>
 </div>
 
 <div class="row g-4">
-    <div class="col-12 col-xl-5">
+    <div class="col-12">
         <div class="card section-card h-100">
             <div class="card-header d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
                 <span>Clientes registrados</span>
@@ -84,33 +155,10 @@
                                 <th>DNI</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="tablaClientes"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-12 col-xl-7">
-        <div class="card section-card h-100">
-            <div class="card-header">Reservas registradas</div>
-            
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped align-middle mb-0">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Cliente</th>
-                                <th>Cancha</th>
-                                <th>Fecha</th>
-                                <th>Horario</th>
-                                <th>Estado</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaReservasCliente"></tbody>
                     </table>
                 </div>
             </div>
