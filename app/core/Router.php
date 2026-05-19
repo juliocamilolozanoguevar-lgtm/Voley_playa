@@ -19,6 +19,7 @@ class Router
         ['GET', '#^/api/clientes$#', 'ClienteController', 'list'],
         ['POST', '#^/api/clientes$#', 'ClienteController', 'store'],
         ['GET', '#^/api/clientes/dni/([0-9]{8})$#', 'ClienteController', 'findByDni'],
+        ['DELETE', '#^/api/clientes/([0-9]+)$#', 'ClienteController', 'destroy'],
 
         ['GET', '#^/api/canchas$#', 'ReservaController', 'canchas'],
         ['GET', '#^/api/reservas$#', 'ReservaController', 'list'],

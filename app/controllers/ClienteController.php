@@ -69,4 +69,25 @@ class ClienteController extends Controller
         $cliente = $model->create($dni, $nombre, $apellido);
         $this->json($cliente, 201);
     }
+
+    public function destroy(string $id): void
+    {
+        if (!$this->requireAuth(true)) {
+            return;
+        }
+
+        $clienteId = (int) $id;
+        $model = new Cliente();
+
+        if (!$model->findById($clienteId)) {
+            $this->json(['message' => 'Cliente no encontrado'], 404);
+        }
+
+        if ($model->hasReservas($clienteId)) {
+            $this->json(['message' => 'No se puede eliminar el cliente porque tiene reservas registradas'], 409);
+        }
+
+        $model->delete($clienteId);
+        $this->json(['message' => 'Cliente eliminado correctamente']);
+    }
 }

@@ -120,9 +120,12 @@ function renderTablaClientes(clientes, filtrado = false) {
             <td>${escapeHtml(cliente.dni)}</td>
             <td>${escapeHtml(cliente.nombre)}</td>
             <td>${escapeHtml(cliente.apellido)}</td>
-            <td>
+            <td class="d-flex flex-wrap gap-2">
                 <button type="button" class="btn btn-outline-primary btn-sm" data-action="nueva-reserva" data-id="${cliente.idCliente}">
                     Nueva reserva
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-sm" data-action="delete" data-id="${cliente.idCliente}">
+                    Eliminar
                 </button>
             </td>
         </tr>
@@ -138,7 +141,7 @@ function normalizarTexto(value) {
 }
 
 function manejarAccionesClientes(event) {
-    const button = event.target.closest("[data-action='nueva-reserva']");
+    const button = event.target.closest("[data-action]");
     if (!button) {
         return;
     }
@@ -151,7 +154,29 @@ function manejarAccionesClientes(event) {
         return;
     }
 
-    abrirModalNuevaReserva(cliente);
+    if (button.dataset.action === "nueva-reserva") {
+        abrirModalNuevaReserva(cliente);
+        return;
+    }
+
+    if (button.dataset.action === "delete") {
+        eliminarCliente(cliente);
+    }
+}
+
+async function eliminarCliente(cliente) {
+    const nombreCompleto = `${cliente.nombre} ${cliente.apellido}`.trim();
+    if (!window.confirm(`Desea eliminar al cliente ${nombreCompleto}?`)) {
+        return;
+    }
+
+    try {
+        await apiFetch(`/api/clientes/${cliente.idCliente}`, { method: "DELETE" });
+        showMessage("mensajeCliente", "Cliente eliminado correctamente", "success");
+        await listarClientes();
+    } catch (error) {
+        showMessage("mensajeCliente", error.message || "No se pudo eliminar el cliente");
+    }
 }
 
 function abrirModalNuevaReserva(cliente) {

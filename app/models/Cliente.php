@@ -51,6 +51,20 @@ class Cliente extends BaseModel
         return $this->create($dni, $nombre, $apellido);
     }
 
+    public function hasReservas(int $id): bool
+    {
+        $stmt = $this->db->prepare('SELECT COUNT(*) FROM reserva WHERE id_cliente = :id');
+        $stmt->execute(['id' => $id]);
+
+        return (int) $stmt->fetchColumn() > 0;
+    }
+
+    public function delete(int $id): void
+    {
+        $stmt = $this->db->prepare('DELETE FROM cliente WHERE id_cliente = :id');
+        $stmt->execute(['id' => $id]);
+    }
+
     private function mapCliente(array $row): array
     {
         return [
