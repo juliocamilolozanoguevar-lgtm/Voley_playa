@@ -44,7 +44,7 @@ class Controller
         return $_POST;
     }
 
-    protected function requireAuth(bool $api = false): bool
+        protected function requireAuth(bool $api = false): bool
     {
         if (is_logged_in()) {
             return true;
